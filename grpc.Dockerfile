@@ -1,17 +1,15 @@
-FROM python:3.7-alpine as base
+FROM python:3.7-alpine
 
 LABEL maintainer "Yefta Sutanto <yefta@bitwyre.com>"
 
-# ---- compile image ----
-FROM base AS compile-image
+COPY ./requirements/grpc.txt /app/bitwyre/base-grpc/requirements.txt
 
-COPY ./requirements/grpc.txt /app/bitwyre/base/requirements.txt
+RUN python -m venv /app/bitwyre/base-grpc/venv
+ENV PATH="/app/bitwyre/base-grpc/venv/bin:$PATH"
 
-RUN python -m venv /app/bitwyre/base/venv
-ENV PATH="/app/bitwyre/base/venv/bin:$PATH"
-
-WORKDIR /app/bitwyre/base
+WORKDIR /app/bitwyre/base-grpc
 
 RUN apk --no-cache add --virtual build-deps git g++ musl-dev && \
+    pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt && \
     apk --no-cache del build-deps
