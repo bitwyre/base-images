@@ -10,6 +10,7 @@ ENV PATH="/app/bitwyre/base-grpc/venv/bin:$PATH"
 WORKDIR /app/bitwyre/base-grpc
 
 RUN apk --no-cache add --virtual build-deps g++ musl-dev && \
-    pip install --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt && \
-    apk --no-cache del build-deps
+    pip install --upgrade pip wheel && \
+    pip wheel -r requirements.txt -w /app/bitwyre/base-grpc/wheels && \
+    apk --no-cache del build-deps && \
+    rm -rf /var/cache/apk/*
