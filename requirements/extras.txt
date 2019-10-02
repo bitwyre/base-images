@@ -1,0 +1,6 @@
+flask-jsonpify
+MarkupSafe
+python-bitcoinrpc
+python-monerorpc
+git+https://github.com/bitwyre/python-ethrpc#egg=ethereumrpc
+git+https://github.com/bitwyre/python-litecoinrpc#egg=litecoinrpc
