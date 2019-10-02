@@ -8,5 +8,9 @@ COPY ./requirements/development.txt /app/bitwyre/base-python/requirements-dev.tx
 
 WORKDIR /app/bitwyre/base-python
 
-RUN pip install --upgrade pip wheel && \
-    pip wheel -r requirements-dev.txt -w /app/bitwyre/base-python/wheels
+RUN apk --no-cache add --virtual build-deps \
+        g++ && \
+    pip install --upgrade pip wheel && \
+    pip wheel -r requirements-dev.txt -w /app/bitwyre/base-python/wheels && \
+    apk --no-cache del build-deps && \
+    rm -rf /var/cache/apk/*
