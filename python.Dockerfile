@@ -10,7 +10,7 @@ WORKDIR /app/bitwyre/base-python
 
 RUN apk --no-cache add --virtual build-deps \
         g++ \
-        librdkafka-dev \
+        librdkafka-dev && \
     pip install --upgrade pip wheel && \
     pip wheel -r requirements.txt -w /app/bitwyre/base-python/wheels && \
     apk --no-cache del build-deps && \
