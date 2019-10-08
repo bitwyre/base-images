@@ -1,4 +1,4 @@
 flask-jsonpify==1.4.0
-MarkupSafe==1.1.0
+MarkupSafe==1.1.1
 python-bitcoinrpc==0.3
 python-monerorpc==0.5.4
