@@ -1,3 +1,2 @@
 confluent-kafka==1.2.0
-cryptography==2.7
-PyJWT==1.7.1
+PyJWT[crypto]==1.7.1
