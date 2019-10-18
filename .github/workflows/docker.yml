@@ -10,6 +10,23 @@ env:
   DOCKER_IMAGE_NAME: "base-images"
 
 jobs:
+  apidocs:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      max-parallel: 4
+      matrix:
+        os: [ubuntu-18.04]
+    env:
+      DOCKER_IMAGE_TAG: "apidocs-alpine"
+    steps:
+    - uses: actions/checkout@master
+    - name: Pull previous image for cache
+      run: docker pull $DOCKER_NAMESPACE/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+    - name: Build and Publish to Docker Hub
+      uses: pangzineng/Github-Action-One-Click-Docker@master
+      with:
+        args: "-f apidocs.Dockerfile ."
+
   grpc:
     runs-on: ${{ matrix.os }}
     strategy:
