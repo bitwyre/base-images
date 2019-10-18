@@ -4,7 +4,7 @@
   </a>
 </p>
 
-![Workflow Status](https://github.com/bitwyre/base-images/workflows/Docker/badge.svg)
+![Workflow Status](https://github.com/bitwyre/base-images/workflows/Publish%20Docker/badge.svg)
 
 # Docker Base Images
 
