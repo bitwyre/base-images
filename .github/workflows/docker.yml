@@ -17,7 +17,7 @@ jobs:
       matrix:
         os: [ubuntu-18.04]
     env:
-      DOCKER_IMAGE_TAG: "apidocs-alpine"
+      DOCKER_IMAGE_TAG: "apidocs"
     steps:
     - uses: actions/checkout@master
     - name: Pull previous image for cache
