@@ -1,4 +1,4 @@
-FROM ruby:2.5-alpine
+FROM ruby:2.6.5-alpine
 
 LABEL maintainer "Yefta Sutanto <yefta@bitwyre.com>"
 
