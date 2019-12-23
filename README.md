@@ -14,6 +14,10 @@ This repo holds the Dockerfile for our pre-built base images to speed up develop
 
 [Yefta Sutanto](https://github.com/nevrending)
 
+# Contributors
+
+- [Aditya Kresna](https://github.com/Ujang360)
+
 # Copyright
 
 &copy; 2019 Bitwyre Technologies LLC
