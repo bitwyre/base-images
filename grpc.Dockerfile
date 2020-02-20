@@ -6,7 +6,7 @@ COPY ./requirements/grpc.txt /app/bitwyre/base-grpc/requirements.txt
 
 WORKDIR /app/bitwyre/base-grpc
 
-RUN apk --no-cache add --virtual build-deps g++ musl-dev && \
+RUN apk --no-cache add --virtual build-deps g++ linux-headers musl-dev && \
     pip install --upgrade pip wheel && \
     pip wheel -r requirements.txt -w /app/bitwyre/base-grpc/wheels && \
     apk --no-cache del build-deps && \
