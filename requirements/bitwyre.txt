@@ -4,5 +4,5 @@ flask-jsonpify==1.5.0
 MarkupSafe==1.1.1
 PyJWT[crypto]==1.7.1
 python-bitcoinrpc==1.0
-python-monerorpc==0.5.12
+python-monerorpc==0.5.13
 pyzmq==19.0.0
