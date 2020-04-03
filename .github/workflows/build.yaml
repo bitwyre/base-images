@@ -1,0 +1,81 @@
+name: Build Docker
+
+on:
+  push:
+    branches:
+    - 'dependabot/**'
+  pull_request:
+    branches:
+    - master
+
+env:
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  DOCKER_NAMESPACE: "bitwyre"
+  DOCKER_IMAGE_NAME: "base-images"
+
+jobs:
+  apidocs:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      max-parallel: 4
+      matrix:
+        os: [ubuntu-18.04]
+    env:
+      DOCKER_IMAGE_TAG: "apidocs"
+    steps:
+    - uses: actions/checkout@master
+    - name: Pull previous image for cache
+      run: docker pull $DOCKER_NAMESPACE/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+    - name: Build docker image
+      run: docker build -t $DOCKER_NAMESPACE/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG -f apidocs.Dockerfile .
+
+  grpc:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      max-parallel: 4
+      matrix:
+        # os: [ubuntu-18.04]
+        os: [self-hosted]
+    env:
+      DOCKER_IMAGE_TAG: "grpc-alpine"
+    steps:
+    - uses: actions/checkout@master
+    - name: Pull previous image for cache
+      run: docker pull $DOCKER_NAMESPACE/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+    - name: Build docker image
+      run: docker build -t $DOCKER_NAMESPACE/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG -f grpc.Dockerfile .
+
+  python:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      max-parallel: 4
+      matrix:
+        # os: [ubuntu-18.04]
+        os: [self-hosted]
+    env:
+      DOCKER_IMAGE_TAG: "python-alpine"
+    needs: [grpc]
+    steps:
+    - uses: actions/checkout@master
+    - name: Pull previous image for cache
+      run: docker pull $DOCKER_NAMESPACE/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+    - name: Build docker image
+      run: docker build -t $DOCKER_NAMESPACE/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG -f python.Dockerfile .
+
+  python-dev:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      max-parallel: 4
+      matrix:
+        # os: [ubuntu-18.04]
+        os: [self-hosted]
+    env:
+      DOCKER_IMAGE_TAG: "python-dev-alpine"
+    needs: [grpc, python]
+    steps:
+    - uses: actions/checkout@master
+    - name: Pull previous image for cache
+      run: docker pull $DOCKER_NAMESPACE/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+    - name: Build docker image
+      run: docker build -t $DOCKER_NAMESPACE/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG -f python-dev.Dockerfile .
