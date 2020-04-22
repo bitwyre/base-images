@@ -1,7 +1,8 @@
 name: Publish Docker
 
 on:
-  push:
+  pull_request:
+    types: [closed]
     branches:
     - master
 
@@ -14,6 +15,7 @@ env:
 
 jobs:
   apidocs:
+    if: github.event.pull_request.merged == true
     runs-on: ${{ matrix.os }}
     strategy:
       max-parallel: 4
@@ -31,6 +33,7 @@ jobs:
         args: "-f apidocs.Dockerfile ."
 
   grpc:
+    if: github.event.pull_request.merged == true
     runs-on: ${{ matrix.os }}
     strategy:
       max-parallel: 4
@@ -49,6 +52,7 @@ jobs:
         args: "-f grpc.Dockerfile ."
 
   python:
+    if: github.event.pull_request.merged == true
     runs-on: ${{ matrix.os }}
     strategy:
       max-parallel: 4
@@ -68,6 +72,7 @@ jobs:
         args: "-f python.Dockerfile ."
 
   python-dev:
+    if: github.event.pull_request.merged == true
     runs-on: ${{ matrix.os }}
     strategy:
       max-parallel: 4
