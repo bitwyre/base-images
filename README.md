@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/bitwyre">
-    <img src="https://github.com/bitwyre/interface/blob/develop/public/static/images/logo.png?raw=true" alt="Logo" height="80" width="auto">
+    <img src="https://cdn.bitwyre.com/public/images/bitwyre-logo.png" alt="Logo" height="80" width="auto">
   </a>
 </p>
 
