@@ -5,6 +5,7 @@
 </p>
 
 ![Workflow Status](https://github.com/bitwyre/base-images/workflows/Publish%20Docker/badge.svg)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=bitwyre/base-images)](https://dependabot.com)
 
 # Docker Base Images
 
