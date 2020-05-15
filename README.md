@@ -17,7 +17,8 @@ This repo holds the Dockerfile for our pre-built base images to speed up develop
 
 # Contributors
 
-[Aditya Kresna](https://github.com/ujang360)
+- [Aditya Kresna](https://github.com/ujang360)
+- [Dendi Suhubdy](https://github.com/dendisuhubdy)
 
 # Copyright
 
