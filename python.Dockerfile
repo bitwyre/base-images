@@ -8,8 +8,20 @@ COPY ./requirements/bitwyre.txt /app/bitwyre/base-python/requirements.txt
 
 WORKDIR /app/bitwyre/base-python
 
-RUN apk --no-cache add --virtual build-deps \
+RUN apk --no-cache --update-cache add --virtual build-deps \
         g++ \
+        gfortran \
+        gcc \
+        py3-numpy \
+        py-numpy-dev \
+        python \
+        python-dev \
+        py-pip \
+        build-base \
+        wget \
+        freetype-dev \
+        libpng-dev \
+        openblas-dev \
         libffi-dev \
         librdkafka-dev \
         openssl-dev && \
@@ -17,3 +29,4 @@ RUN apk --no-cache add --virtual build-deps \
     pip wheel -r requirements.txt -w /app/bitwyre/base-python/wheels && \
     apk --no-cache del build-deps && \
     rm -rf /var/cache/apk/*
+RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
