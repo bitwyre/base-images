@@ -19,11 +19,7 @@ RUN apk --no-cache add --virtual build-deps \
         lapack-dev \
         musl-dev \
         openssl-dev && \
-    apk --no-cache add \
-        py3-scipy && \
     pip install --upgrade pip wheel && \
     pip wheel -r requirements.txt -w /app/bitwyre/base-python/wheels && \
     apk --no-cache del build-deps && \
     rm -rf /var/cache/apk/*
-    
-ENV PYTHONPATH=/usr/lib/python3.7/site-packages
