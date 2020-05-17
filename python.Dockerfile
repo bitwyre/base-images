@@ -13,6 +13,7 @@ RUN apk --no-cache add --virtual build-deps \
         libffi-dev \
         librdkafka-dev \
         openblas-dev \
+        build-base \
         lapack-dev \
         openssl-dev && \
     pip install --upgrade pip wheel && \
