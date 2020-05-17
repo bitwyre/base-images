@@ -9,15 +9,9 @@ COPY ./requirements/bitwyre.txt /app/bitwyre/base-python/requirements.txt
 WORKDIR /app/bitwyre/base-python
 
 RUN apk --no-cache add --virtual build-deps \
-        gcc \
         g++ \
-        libstdc++ \
         libffi-dev \
         librdkafka-dev \
-        openblas-dev \
-        build-base \
-        lapack-dev \
-        musl-dev \
         openssl-dev && \
     pip install --upgrade pip wheel && \
     pip wheel -r requirements.txt -w /app/bitwyre/base-python/wheels && \
