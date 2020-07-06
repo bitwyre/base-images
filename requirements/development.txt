@@ -1,4 +1,4 @@
-coverage==5.1
+coverage==5.2
 nodeenv==1.4.0
 pyyaml==5.3.1
 typed-ast==1.4.1
