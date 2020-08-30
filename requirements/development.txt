@@ -2,4 +2,4 @@ coverage==5.2.1
 nodeenv==1.5.0
 pyyaml==5.3.1
 typed-ast==1.4.1
-sentry-sdk[flask]==0.17.0
+sentry-sdk[flask]==0.17.1
