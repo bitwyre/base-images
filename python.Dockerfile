@@ -10,6 +10,8 @@ WORKDIR /app/bitwyre/base-python
 
 RUN apk --no-cache add --virtual build-deps \
         g++ \
+        linux-headers \
+        musl-dev \
         libffi-dev \
         librdkafka-dev \
         openssl-dev && \
