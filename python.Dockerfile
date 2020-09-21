@@ -9,6 +9,7 @@ COPY ./requirements/bitwyre.txt /app/bitwyre/base-python/requirements.txt
 WORKDIR /app/bitwyre/base-python
 
 RUN apk --no-cache add --virtual build-deps \
+        gcc \
         g++ \
         linux-headers \
         musl-dev \
